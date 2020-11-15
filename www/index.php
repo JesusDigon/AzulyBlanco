@@ -1,46 +1,43 @@
-<html>
- <head>
-  <title>Hello...</title>
+<?php
+session_start();
+include_once 'app/controlador.php';
+include_once 'app/modelo.php';
+include_once 'app/config.php';
 
-  <meta charset="utf-8"> 
+$rutaUsuario = [
+    "Inicio" => "ctrInicio",
+    "Carta" => "ctrCarta",
+    "Contacto" => "ctrContacto",
+    "Desayunos" => "ctrDesayunos",
+    "Panes" => "ctrPanes",
+    "Croissants" => "ctrCroissants",
+    "Sandwich" => "ctrSandwich",
+    "Empanadas" => "ctrEmpanadas",
+    "Bocadillos" => "ctrBocadillos",
+    "Dulces" => "ctrDulces",
+    "Sin Gluten" => "ctrSinGluten",
+    "Bebidas" => "ctrBebidas",
+    "Ensaladas" => "ctrEnsaladas",
+    "Nuevo" => "ctrNuevoProducto",
+    "Admin" => "ctrAdmin",
+    "VerAdmin" => "ctrVerAdmin",
+    "Borrar" => "ctrBorrar",
+    "Editar" => "ctrEditar",
+    "cerrarSesion" => "ctrCerrarSesion"
+];
 
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-</head>
-<body>
-    <div class="container">
-    <?php echo "<h1>Hi! I'm happy</h1>"; ?>
-
-    <?php
-
-    // Connexion et sélection de la base
-    $conn = mysqli_connect('db', 'user', 'test', "myDb");
-
-
-    $query = 'SELECT * From Person';
-    $result = mysqli_query($conn, $query);
-
-    echo '<table class="table table-striped">';
-    echo '<thead><tr><th></th><th>id</th><th>name</th></tr></thead>';
-    while($value = $result->fetch_array(MYSQLI_ASSOC)){
-        echo '<tr>';
-        echo '<td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>';
-        foreach($value as $element){
-            echo '<td>' . $element . '</td>';
-        }
-
-        echo '</tr>';
+if (isset($_GET['orden'])) {
+    if (isset($rutaUsuario[$_GET['orden']])) {
+        $procedimiento = $rutaUsuario[$_GET['orden']];
+    } else {
+        header('Status: 404 Not Found');
+        echo '<html><body><h1>Error 404: No existe la ruta <i>' . $_GET['ctl'] . '</p></body></html>';
+        exit();
     }
-    echo '</table>';
+} else {
+    $procedimiento = "ctrInicio";
+}
 
-    /* Libération du jeu de résultats */
-    $result->close();
+$procedimiento();
 
-    mysqli_close($conn);
-
-    ?>
-    </div>
-</body>
-</html>
+?>

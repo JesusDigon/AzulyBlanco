@@ -17,9 +17,9 @@ services:
         command: --default-authentication-plugin=mysql_native_password
         environment:
             MYSQL_DATABASE: myDb
-            MYSQL_USER: user
-            MYSQL_PASSWORD: test
-            MYSQL_ROOT_PASSWORD: test 
+            MYSQL_USER: root
+            MYSQL_PASSWORD: pass
+            MYSQL_ROOT_PASSWORD: pass 
         volumes:
             - ./dump:/docker-entrypoint-initdb.d
             - ./conf:/etc/mysql/conf.d
@@ -33,8 +33,8 @@ services:
         ports:
             - 8000:80
         environment:
-            MYSQL_USER: user
-            MYSQL_PASSWORD: test
-            MYSQL_ROOT_PASSWORD: test 
+            MYSQL_USER: root
+            MYSQL_PASSWORD: pass
+            MYSQL_ROOT_PASSWORD: pass 
 volumes:
     persistent:

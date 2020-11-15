@@ -1,0 +1,52 @@
+body{
+    color: darkblue;
+    background-color: #fff ;
+    color:darkblue ;
+}
+
+body .table{
+  text-align: center;
+  background-color: #fff ;
+  color: darkblue;
+}
+
+
+.bg-dark-blue{
+  background-color: darkblue;
+  color:#fff;
+}
+body .carousel-control-next,
+body .carousel-control-prev {
+  filter: invert();
+}
+body .rrss:hover {
+  filter: contrast(25%);
+}
+.rrss{
+  width: 4em;
+}
+section{
+  font-family: 'Roboto', sans-serif;
+}
+h1{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+footer{
+  font-family: 'Raleway', sans-serif;
+}
+
+.prod-img{
+  height: 200px;
+}
+
+
+/* .imgCarousel {
+  width: 500px;
+  height: 400px;
+}
+
+@media (max-width: 600px) {
+  .facet_sidebar {
+    display: none;
+  }
+} */
