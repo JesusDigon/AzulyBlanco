@@ -3,16 +3,24 @@
 $cabecera = '';
 ?>
     <!-- Cabeceras Secundarias -->
-    <div class="row mb-5"></div>
+    <div class="row"></div>
         <header class="row justify-content-center mb-3 align-items-center" style="height: 20vh;">
             <h1 class="text-capitalize">NUESTRA CARTA</h1>
         </header>
         <div class="container ">
             <div class="row justify-content-around">
+                <nav class="nav">
+                    <?php foreach($productos as $producto):?>
+                        <?php if($cabecera !== $producto->tipo):?>
+                            <a class="nav-link" href="#<?=$producto->tipo?>"><?=$producto->tipo?></a>
+                            <?php $cabecera = $producto->tipo?>
+                        <?php endif;?>
+                    <?php endforeach;?>
+                </nav>
                 <?php foreach($productos as $producto):?>
                     <?php if($cabecera !== $producto->tipo):?>
                         <div class="row m-5 col-12 justify-content-center">
-                            <h3 class="text-center"><?=$producto->tipo?></h3>
+                            <h3 id="<?=$producto->tipo?>" class="text-center"><?=$producto->tipo?></h3>
                         </div>
                         <?php $cabecera = $producto->tipo?>
                         

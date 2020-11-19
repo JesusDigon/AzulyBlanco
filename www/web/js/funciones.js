@@ -11,3 +11,7 @@ function confirmarEditar(nombre,id){
     document.location.href="?orden=Editar&id="+id;
   }
 }
+
+$(document).ready(function(){
+  // var altura_nav = $('.nav').
+});
